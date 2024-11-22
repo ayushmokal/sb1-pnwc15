@@ -1,0 +1,95 @@
+{% assign logo_alt = section.settings.logo_alt | default: shop.name | escape %}
+
+<header class="site-header">
+  <div class="page-width">
+    <div class="header-wrapper">
+      <div class="site-header__logo-wrapper">
+        {% if section.settings.logo != blank %}
+          <a href="/" class="site-header__logo">
+            {%- assign image_size = section.settings.logo_width | append: 'x' -%}
+            <img src="{{ section.settings.logo | img_url: image_size }}"
+                 srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+                 alt="{{ logo_alt }}"
+                 loading="lazy"
+                 width="{{ section.settings.logo_width }}"
+                 height="{{ section.settings.logo_width | divided_by: logo_aspect_ratio | round }}">
+          </a>
+        {% else %}
+          <a href="/" class="site-header__logo">{{ shop.name }}</a>
+        {% endif %}
+      </div>
+
+      <nav class="site-header__nav">
+        {% if section.settings.menu != blank %}
+          <ul class="site-nav">
+            {% for link in linklists[section.settings.menu].links %}
+              <li class="site-nav__item">
+                <a href="{{ link.url }}" class="site-nav__link">{{ link.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </nav>
+
+      <div class="site-header__icons">
+        {% if section.settings.show_search %}
+          <button type="button" class="site-header__icon site-header__search">
+            {% render 'icon-search' %}
+            <span class="visually-hidden">{{ 'general.search.search' | t }}</span>
+          </button>
+        {% endif %}
+
+        <a href="/account" class="site-header__icon site-header__account">
+          {% render 'icon-account' %}
+          <span class="visually-hidden">{{ 'customer.account_fallback' | t }}</span>
+        </a>
+
+        <a href="/cart" class="site-header__icon site-header__cart">
+          {% render 'icon-cart' %}
+          <span class="visually-hidden">{{ 'general.cart.title' | t }}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 50,
+      "max": 250,
+      "step": 10,
+      "default": 100,
+      "unit": "px",
+      "label": "Logo width"
+    },
+    {
+      "type": "text",
+      "id": "logo_alt",
+      "label": "Logo alternative text",
+      "info": "Leave blank to use shop name"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "Menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "default": true,
+      "label": "Show search"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,15 @@
+{
+  "current": {
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo_width": 100,
+          "menu": "main-menu",
+          "show_search": true
+        }
+      }
+    },
+    "content_for_index": []
+  }
+}

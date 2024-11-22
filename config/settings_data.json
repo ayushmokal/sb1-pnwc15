@@ -1,0 +1,17 @@
+{
+  "current": {
+    "colors_solid_button_labels": "#FFFFFF",
+    "colors_accent_1": "#007AFF",
+    "type_header_font": "helvetica_n4",
+    "type_body_font": "helvetica_n4",
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {
+          "text": "Download our latest version of the YO Home Sperm Test",
+          "link": "#"
+        }
+      }
+    }
+  }
+}

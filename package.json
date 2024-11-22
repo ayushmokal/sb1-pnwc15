@@ -1,0 +1,17 @@
+{
+  "name": "yo-sperm-test-theme",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "shopify theme dev",
+    "deploy": "shopify theme deploy",
+    "build": "shopify theme build"
+  },
+  "devDependencies": {
+    "@shopify/cli": "^3.50.0",
+    "@shopify/theme": "^3.50.0",
+    "postcss": "^8.4.28",
+    "tailwindcss": "^3.3.3",
+    "autoprefixer": "^10.4.15"
+  }
+}
